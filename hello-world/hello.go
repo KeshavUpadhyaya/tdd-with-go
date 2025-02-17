@@ -1,17 +1,34 @@
 package main
 
-import "fmt"
+const (
+	englishHelloPrefix = "Hello, "
+	spanish            = "Spanish"
+	spanishHelloPrefix = "Hola, "
+	german             = "German"
+	germanHelloPrefix  = "Hallo, "
+)
 
-const englishHelloPrefix = "Hello, "
-
-func Hello(name string) string {
+// uppercase - public functions
+func Hello(name string, lang string) string {
 	if name == "" {
 		name = "World"
 	}
 
-	return englishHelloPrefix + name
+	return greetingPrefix(lang) + name
 }
 
-func main() {
-	fmt.Println(Hello("world"))
+// lowercase private functions
+func greetingPrefix(lang string) (prefix string) {
+	switch lang {
+	case spanish:
+		prefix = spanishHelloPrefix
+
+	case german:
+		prefix = germanHelloPrefix
+
+	default:
+		prefix = englishHelloPrefix
+	}
+
+	return
 }
